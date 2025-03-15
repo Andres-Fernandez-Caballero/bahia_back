@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pin', (req, res) => {
-  res.send('Estoy vivo !!!');
+  res.send('conectado a ' + process.env.MONGODB_HOST);
 });
 
 app.use('/api/v1/peticion_ayuda', ApiPeticionAyudaRouter);
