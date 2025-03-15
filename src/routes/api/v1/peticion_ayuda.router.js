@@ -59,7 +59,7 @@ ApiPeticionAyudaRouter
   ApiPeticionAyudaRouter.get('/', async (req, res) => {
     try {
       // Obtener todas las peticiones de ayuda
-      const peticiones = await PeticionAyuda.find();
+      const peticiones = await PeticionAyuda.find({isActive: true});
   
       // Verificar si existe la query param idVol
       const idVol = req.query.idVol;
