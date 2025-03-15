@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahia Voluntarios - Unidos por Bahía Blanca</title>
+    <style>
+        :root {
+            --primary-color: #00c853;
+            --primary-dark: #009624;
+            --primary-light: #5efc82;
+            --gray-light: #f5f5f5;
+            --gray: #757575;
+            --dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .secondary-button:hover {
+            background: var(--gray-light);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: -2rem auto 3rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* How it Works */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Stats */
+        .stats {
+            background: var(--gray-light);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        /* Volunteer */
+        .volunteer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .volunteer h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .volunteer p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .nav-menu {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+
+            .stats-container {
+                flex-wrap: wrap;
+            }
+
+            .stat {
+                flex: 0 0 50%;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer-column {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Bahia Voluntarios</a>
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link">Sobre Nosotros</a>
+                <a href="#how-it-works" class="nav-link">Cómo Funciona</a>
+                <a href="#testimonials" class="nav-link">Testimonios</a>
+                <a href="#contact" class="nav-link">Contacto</a>
+                <a href="#" class="cta-button">Solicitar Ayuda</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Estamos todos por Bahía</h1>
+            <p>Conectamos voluntarios con personas que necesitan ayuda en Bahía Blanca. Juntos podemos hacer la diferencia en nuestra comunidad.</p>
+            <div class="hero-buttons">
+                <a href="#" class="cta-button">Solicitar Ayuda</a>
+                <a href="#" class="secondary-button">Ser Voluntario</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <p class="section-subtitle">Conoce nuestra misión y visión para Bahía Blanca</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bahia Voluntarios nació como respuesta a la necesidad de organizar la ayuda comunitaria en nuestra ciudad. Somos una plataforma que conecta a personas que necesitan ayuda con voluntarios dispuestos a brindarla.</p>
+                    <p>Nuestra misión es fortalecer el tejido social de Bahía Blanca, promoviendo la solidaridad y el trabajo colaborativo entre vecinos. Creemos en el poder de la comunidad para transformar realidades.</p>
+                    <p>Desde pequeñas tareas como pintar una pared hasta proyectos más grandes, cada acción cuenta y contribuye a construir una ciudad más unida y solidaria.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/placeholder.svg?height=400&width=600" alt="Voluntarios trabajando en Bahía Blanca">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Cómo Funciona</h2>
+            <p class="section-subtitle">Un proceso simple para conectar necesidades con soluciones</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Solicita Ayuda</h3>
+                    <p>Completa el formulario indicando qué necesitas, dónde y cuántas personas se requieren para la tarea.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Conectamos Voluntarios</h3>
+                    <p>Los voluntarios ven tu solicitud y se ofrecen para ayudar según su disponibilidad y habilidades.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Seguimiento</h3>
+                    <p>Nuestra plataforma permite seguir el estado de cada solicitud: quiénes van, quiénes están trabajando y qué está listo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title">Nuestro Impacto</h2>
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Solicitudes Atendidas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-label">Voluntarios Activos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Barrios Beneficiados</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Horas de Voluntariado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonios</h2>
+            <p class="section-subtitle">Lo que dicen nuestros voluntarios y beneficiarios</p>
+            
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Gracias a Bahia Voluntarios pude recibir ayuda para reparar mi techo después de la tormenta. Vinieron 5 personas y en un día resolvieron un problema que yo solo no hubiera podido solucionar."</p>
+                    <p class="testimonial-author">- María Gómez, Barrio Universitario</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Ser voluntario me ha permitido conocer a mis vecinos y sentirme parte de algo más grande. Es increíble ver cómo pequeñas acciones pueden cambiar la vida de alguien."</p>
+                    <p class="testimonial-author">- Juan Pérez, Voluntario</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"La plataforma es muy fácil de usar. Publiqué mi necesidad y en pocas horas ya tenía voluntarios dispuestos a ayudar. La organización y seguimiento son excelentes."</p>
+                    <p class="testimonial-author">- Carlos Rodríguez, Barrio Flores</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="volunteer">
+        <div class="container">
+            <h2>¿Quieres ser parte del cambio?</h2>
+            <p>Únete a nuestra red de voluntarios y ayuda a construir una Bahía Blanca más solidaria y unida.</p>
+            <a href="#" class="secondary-button">Regístrate como Voluntario</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <p class="section-subtitle">¿Tienes preguntas? Estamos aquí para ayudarte</p>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Bahia Voluntarios</h3>
+                    <p>Estamos todos por Bahía.</p>
+                    <p>Una iniciativa ciudadana para conectar voluntarios con personas que necesitan ayuda en Bahía Blanca.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">Sobre Nosotros</a></li>
+                        <li><a href="#how-it-works">Cómo Funciona</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Solicitar Ayuda</a></li>
+                        <li><a href="#">Ser Voluntario</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li>info@bahiavoluntarios.org</li>
+                        <li>+54 291 123-4567</li>
+                        <li>Bahía Blanca, Argentina</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#" class="social-link">FB</a>
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">TW</a>
+                        <a href="#" class="social-link">WA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Bahia Voluntarios. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
