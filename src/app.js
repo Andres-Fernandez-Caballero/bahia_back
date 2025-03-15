@@ -5,6 +5,10 @@ import ApiRespuestaVoluntariosRouter from './routes/api/v1/respuesta_voluntarios
 import { corsOptions } from './config/cors.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

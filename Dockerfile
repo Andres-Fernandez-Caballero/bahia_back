@@ -5,10 +5,10 @@
     WORKDIR /app
 
     # Copia los archivos del proyecto (package.json y package-lock.json) al contenedor
-    COPY package.json package-lock.json ./
+    COPY package.json ./
 
     # Instala las dependencias necesarias
-    RUN npm install --omit=dev
+    RUN npm install
 
     # Copia el resto del código de la aplicación
     COPY . .
