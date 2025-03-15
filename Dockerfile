@@ -13,8 +13,7 @@
     # Copia el resto del código de la aplicación
     COPY . .
 
-    # Exponer el puerto que se usará en la plataforma (Back4App proporcionará este puerto dinámicamente)
-    EXPOSE 3000
+    EXPOSE 8080
 
     # Comando para iniciar la aplicación
     CMD ["node", "index.js"]
